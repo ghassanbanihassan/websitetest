@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="style.css"> <!-- adds css style source -->
+<a href="Perfect Paws Welcome Page.html" class="button">Home</a> <!-- Home return button -->
+<html>
+    <head>
+        <title>Dog Quiz</title>
+        <style src="style.css"></style>
+    </head>
+    <body background = "quizbackground.jpg">
+        <header>
+            <h1>Quiz</h1>
+        </header>
+        <main>
+            <form>
+                <div>
+                    <label>How much space do you have? (in m<sup>2</sup>)</label>
+                    <input oninput = "space_size()" type="number" maxlength = "5" name = "how_much_space"> m<sup>2</sup></input>
+                </div>
+                <div>
+                    <label>How active are you? </label>
+                    <input oninput = "activity()" type="radio" name = "how_active" value = "low"> Low </input>
+                    <input oninput = "activity()" type="radio" name = "how_active" value = "medium"> Medium </input>
+                    <input oninput = "activity()" type="radio" name = "how_active" value = "high"> High </input>
+                </div>
+                <div>
+                    <label>Preferred dog size?</label>
+                    <input oninput = "dog_size()" type="radio" name = "how_big" value = "small"> Small </input>
+                    <input oninput = "dog_size()" type="radio" name = "how_big" value = "medium"> Medium </input>
+                    <input oninput = "dog_size()" type="radio" name = "how_big" value = "large"> Large </input>
+                </div>
+                <a onclick = "answer()" href="#">Submit</a>
+                <div>
+                    <h2>Your ideal dog is : </h2>
+                    <img alt = "blank placeholder picture" id = "idealdogimg" src = "blankprofilepicture.jpg">
+                    <h3 id = "idealdogtext"></h3>
+                </div>
+                <script>
+                    var spaceSizeAnswer = '5'
+                    var activityAnswer = 'low'
+                    var dogSizeAnswer = 'small'
+                    function space_size(){
+                            var space = document.getElementsByName("how_much_space");
+                            spaceSizeAnswer = space;
+                        }
+                    function activity(){
+                        var active = document.getElementsByName("how_active");
+                        for (i = 0; i < active.length; i++){
+                            if (active[i].checked){
+                                activityAnswer = active[i].value;
+                           }
+                        }
+                    }
+                    function dog_size(){
+                        var sizes = document.getElementsByName("how_big");
+                        for (i = 0; i < sizes.length; i++){
+                            if (sizes[i].checked){
+                                dogSizeAnswer = sizes[i].value;
+                            }
+                        }
+                    }
+                    function answer(){
+                        var dogtext = document.getElementById("idealdogtext");
+                        var dogimg = document.getElementById("idealdogimg");
+                        if (dogSizeAnswer == 'small'){
+                            dogtext.textContent = "Pomeranian";
+                            dogimg.src = "Pomeranian.jpg";
+                            dogimg.alt = "Picture of a pomeranian"
+                        } else if (dogSizeAnswer == 'medium'){
+                            dogtext.textContent = "Beagle";
+                            dogimg.src = "beagle.jpg";
+                            dogimg.alt = "Picture of a Beagle"
+                        } else {
+                            dogtext.textContent = "Malamute";
+                            dogimg.src = "Malamute.jpg";
+                            dogimg.alt = "Picture of a Malamute"
+                        }
+                    }
+                    
+                </script>
+            </form>
+        </main>
+        <footer>
+            <a href="https://www.amazon.co.uk/dog-food/b?ie=UTF8&node=471400031"><img src="foodAd.png"></a>
+        </footer>
+    </body>
+</html>
